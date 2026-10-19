@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bushra Moneeb — Web Developer</title>
+<meta name="description" content="Portfolio of Bushra Moneeb, web developer working with HTML, CSS, JavaScript and React.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1210; --panel:#161C19; --ink:#EDEFEC; --muted:#9BA69F; --mint:#5CE6A6; --line:rgba(237,239,236,.12);
+  --sans:'Space Grotesk', -apple-system, sans-serif; --mono:'JetBrains Mono', monospace;
+  color-scheme: dark;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:74px;}
+body{font-family:var(--sans); background:var(--bg); color:var(--ink); line-height:1.55;}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+.container{max-width:1080px; margin:0 auto; padding:0 24px;}
+h1,h2,h3{font-weight:600; line-height:1.15;}
+.mono{font-family:var(--mono);}
+
+/* NAV */
+#nav{position:sticky; top:0; z-index:50; background:rgba(14,18,16,.88); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+#nav .bar{display:flex; align-items:center; justify-content:space-between; padding:18px 24px;}
+.logo{font-weight:700; font-size:18px;}
+.logo span{color:var(--mint);}
+.navlinks{display:flex; align-items:center; gap:30px; font-size:14px; color:var(--muted);}
+.navlinks a:hover{color:var(--ink);}
+#menuBtn{display:none; font-size:22px; color:var(--ink);}
+@media(max-width:720px){
+  .navlinks{position:fixed; top:62px; left:0; right:0; background:var(--panel); flex-direction:column; align-items:flex-start; gap:0; padding:8px 24px 20px; transform:translateY(-120%); transition:transform .25s; border-bottom:1px solid var(--line);}
+  .navlinks.open{transform:translateY(0);}
+  .navlinks a{padding:14px 0; width:100%; border-bottom:1px solid var(--line);}
+  #menuBtn{display:block;}
+}
+
+/* HERO */
+.hero{padding:100px 24px 80px;}
+.hero-inner{max-width:780px;}
+.hero .mono{color:var(--mint); font-size:14px; margin-bottom:18px; display:block;}
+.hero h1{font-size:clamp(36px,6vw,58px); margin-bottom:18px;}
+.hero h1 .accent{color:var(--mint);}
+.hero p{color:var(--muted); font-size:17px; max-width:520px; margin-bottom:34px;}
+.btn-row{display:flex; gap:18px; flex-wrap:wrap;}
+.btn{display:inline-block; padding:14px 28px; background:var(--mint); color:#0E1210; font-weight:600; font-size:15px; border-radius:3px; transition:transform .2s, box-shadow .2s;}
+.btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(92,230,166,.2);}
+.btn-ghost{display:inline-block; padding:13px 26px; border:1px solid var(--line); font-size:15px; border-radius:3px; color:var(--ink);}
+.btn-ghost:hover{border-color:var(--mint); color:var(--mint);}
+
+/* SECTION */
+.section{padding:80px 24px;}
+.eyebrow{font-family:var(--mono); color:var(--mint); font-size:13px; margin-bottom:12px;}
+.section h2{font-size:30px; margin-bottom:30px;}
+
+/* ABOUT */
+.about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+.about-grid p{color:var(--muted); margin-bottom:16px; font-size:15px;}
+.stack{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+.chip{font-family:var(--mono); font-size:13px; padding:8px 14px; border:1px solid var(--line); border-radius:4px; color:var(--ink);}
+.chip.filled{background:var(--panel); border-color:var(--mint); color:var(--mint);}
+
+/* PROJECTS */
+.proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+@media(max-width:860px){.proj-grid{grid-template-columns:1fr;}}
+.pcard{background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .2s, transform .2s;}
+.pcard:hover{border-color:var(--mint); transform:translateY(-4px);}
+.pcard .thumb{aspect-ratio:16/10; background:#1D2420; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; border-bottom:1px solid var(--line);}
+.pcard-body{padding:22px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.pcard-body h3{font-size:18px;}
+.pcard-body p{color:var(--muted); font-size:14px; flex:1;}
+.pcard-tags{display:flex; flex-wrap:wrap; gap:6px;}
+.tag{font-family:var(--mono); font-size:11px; color:var(--mint); background:rgba(92,230,166,.08); padding:4px 8px; border-radius:3px;}
+.pcard-links{display:flex; gap:16px; font-size:14px; margin-top:4px;}
+.pcard-links a{color:var(--ink); border-bottom:1px solid var(--line);}
+.pcard-links a:hover{color:var(--mint); border-color:var(--mint);}
+.placeholder-note{color:var(--muted); font-size:12px; font-style:italic;}
+
+/* CONTACT */
+.contact-wrap{display:flex; flex-direction:column; align-items:flex-start; gap:20px;}
+.contact-links{display:flex; gap:28px; flex-wrap:wrap; font-size:15px;}
+.contact-links a{border-bottom:1px solid var(--line);}
+.contact-links a:hover{color:var(--mint); border-color:var(--mint);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line); padding:30px 24px;}
+.foot-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:13px; color:var(--muted); max-width:1080px; margin:0 auto;}
+
+@media (prefers-reduced-motion: reduce){*{transition:none !important; scroll-behavior:auto !important;}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="bar container">
+    <a href="#top" class="logo">Bushra<span>.dev</span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="mono">&lt;hello world /&gt;</span>
+    <h1>Hi, I'm Bushra Moneeb — <span class="accent">Web Developer.</span></h1>
+    <p>I build clean, responsive interfaces and functional web applications using HTML, CSS, JavaScript, and React.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn">View Projects</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="eyebrow">// about</div>
+  <h2>A bit about me</h2>
+  <div class="about-grid">
+    <div>
+      <p>I'm a web developer who enjoys turning ideas into working interfaces — from structuring a page with semantic HTML, to styling it with CSS, to making it interactive with JavaScript and React.</p>
+      <p>I care about clean code, usable layouts, and building things that actually work end to end, not just look good in a mockup.</p>
+    </div>
+    <div>
+      <div class="stack">
+        <span class="chip filled">HTML</span>
+        <span class="chip filled">CSS</span>
+        <span class="chip filled">JavaScript</span>
+        <span class="chip filled">React</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="eyebrow">// projects</div>
+  <h2>Selected work</h2>
+  <div class="proj-grid">
+
+    <div class="pcard">
+      <div class="thumb"><img src="Screenshot 2026-10-19 235337_edited.png" alt=""></div>
+      <div class="pcard-body">
+        <h3>MyPatientHUB</h3>
+        <p>A healthcare management web application with sign-in, dashboard, find doctor, find clinic, marketplace, appointments, and chat — built collaboratively with React.</p>
+        <div class="pcard-tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">CSS</span></div>
+        <div class="pcard-links">
+          <a href="https://imaginative-cactus-137559.netlify.app" target="_blank" rel="noopener">Live Site ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="thumb">Screenshot placeholder</div>
+      <div class="pcard-body">
+        <h3>Project Two</h3>
+        <p class="placeholder-note">Add project name, description, tech stack, and link here.</p>
+        <div class="pcard-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+        <div class="pcard-links"><a href="#" onclick="return false;">Live Site ↗</a><a href="#" onclick="return false;">GitHub ↗</a></div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="thumb">Screenshot placeholder</div>
+      <div class="pcard-body">
+        <h3>Project Three</h3>
+        <p class="placeholder-note">Add project name, description, tech stack, and link here.</p>
+        <div class="pcard-tags"><span class="tag">React</span></div>
+        <div class="pcard-links"><a href="#" onclick="return false;">Live Site ↗</a><a href="#" onclick="return false;">GitHub ↗</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="eyebrow">// contact</div>
+  <h2>Let's work together</h2>
+  <div class="contact-wrap">
+    <p style="color:var(--muted); max-width:460px;">Open to opportunities and collaborations — reach out through any of these:</p>
+    <div class="contact-links">
+      <a href="mailto:bushra@example.com">Email (placeholder)</a>
+      <a href="#" onclick="return false;">GitHub (placeholder)</a>
+      <a href="#" onclick="return false;">LinkedIn (placeholder)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom">
+    <span>© 2026 Bushra Moneeb.</span>
+    <span>Built with HTML, CSS & JavaScript.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuBtn').onclick = ()=> document.getElementById('navlinks').classList.toggle('open');
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click', ()=>document.getElementById('navlinks').classList.remove('open')));
+</script>
+</body>
+</html>
