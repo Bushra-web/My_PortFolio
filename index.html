@@ -40,7 +40,10 @@ h1,h2,h3{font-weight:600; line-height:1.15;}
 
 /* HERO */
 .hero{padding:100px 24px 80px;}
-.hero-inner{max-width:780px;}
+.hero-inner{max-width:780px; display:flex; align-items:center; gap:36px; flex-wrap:wrap;}
+.hero-photo{width:120px; height:120px; border-radius:50%; overflow:hidden; border:2px solid var(--mint); flex-shrink:0; background:var(--panel); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px; text-align:center;}
+.hero-photo img{width:100%; height:100%; object-fit:cover;}
+.hero-text{flex:1; min-width:260px;}
 .hero .mono{color:var(--mint); font-size:14px; margin-bottom:18px; display:block;}
 .hero h1{font-size:clamp(36px,6vw,58px); margin-bottom:18px;}
 .hero h1 .accent{color:var(--mint);}
@@ -68,7 +71,8 @@ h1,h2,h3{font-weight:600; line-height:1.15;}
 @media(max-width:860px){.proj-grid{grid-template-columns:1fr;}}
 .pcard{background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .2s, transform .2s;}
 .pcard:hover{border-color:var(--mint); transform:translateY(-4px);}
-.pcard .thumb{aspect-ratio:16/10; background:#1D2420; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; border-bottom:1px solid var(--line);}
+.pcard .thumb{aspect-ratio:16/10; background:#1D2420; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; border-bottom:1px solid var(--line); overflow:hidden;}
+.pcard .thumb img{width:100%; height:100%; object-fit:cover;}
 .pcard-body{padding:22px; display:flex; flex-direction:column; gap:10px; flex:1;}
 .pcard-body h3{font-size:18px;}
 .pcard-body p{color:var(--muted); font-size:14px; flex:1;}
@@ -108,12 +112,17 @@ footer{border-top:1px solid var(--line); padding:30px 24px;}
 
 <section class="hero" id="top">
   <div class="hero-inner">
-    <span class="mono">&lt;hello world /&gt;</span>
-    <h1>Hi, I'm Bushra Moneeb — <span class="accent">Web Developer.</span></h1>
-    <p>I build clean, responsive interfaces and functional web applications using HTML, CSS, JavaScript, and React.</p>
-    <div class="btn-row">
-      <a href="#projects" class="btn">View Projects</a>
-      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    <div class="hero-photo">
+      <img src="your-photo.jpg" alt="Bushra Moneeb" onerror="this.style.display='none'; this.parentElement.textContent='Photo placeholder';">
+    </div>
+    <div class="hero-text">
+      <span class="mono">&lt;hello world /&gt;</span>
+      <h1>Hi, I'm Bushra Moneeb — <span class="accent">Web Developer.</span></h1>
+      <p>I build clean, responsive interfaces and functional web applications using HTML, CSS, JavaScript, and React.</p>
+      <div class="btn-row">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
     </div>
   </div>
 </section>
@@ -143,7 +152,7 @@ footer{border-top:1px solid var(--line); padding:30px 24px;}
   <div class="proj-grid">
 
     <div class="pcard">
-      <div class="thumb"><img src="Screenshot 2026-10-19 235337_edited.png" alt=""></div>
+      <div class="thumb"><img src="Screenshot 2026-10-19 235337_edited.png" alt="MyPatientHUB screenshot"></div>
       <div class="pcard-body">
         <h3>MyPatientHUB</h3>
         <p>A healthcare management web application with sign-in, dashboard, find doctor, find clinic, marketplace, appointments, and chat — built collaboratively with React.</p>
@@ -155,12 +164,12 @@ footer{border-top:1px solid var(--line); padding:30px 24px;}
     </div>
 
     <div class="pcard">
-      <div class="thumb"><img src="calculat.png" alt=""></div>
+      <div class="thumb"><img src="calculat.png" alt="Calculator screenshot"></div>
       <div class="pcard-body">
         <h3>Calculator</h3>
-        <p class="placeholder-note">A responsive calculator web app built with HTML, CSS, and JavaScript, handling standard arithmetic operations through a clean, intuitive interface.</p>
+        <p>A responsive calculator web app built with HTML, CSS, and JavaScript, handling standard arithmetic operations through a clean, intuitive interface.</p>
         <div class="pcard-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
-        <div class="pcard-links"><a href="https://bushra-web.github.io/Calculator/" onclick="return false;">Live Site ↗</a></div>
+        <div class="pcard-links"><a href="https://bushra-web.github.io/Calculator/" target="_blank" rel="noopener">Live Site ↗</a></div>
       </div>
     </div>
 
